@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build-and-run:
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -13,7 +13,7 @@ jobs:
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
-        java-version: '25'
+        java-version: '17'
         distribution: 'temurin'
 
     - name: Build Java application 
@@ -26,7 +26,7 @@ jobs:
       run: docker build -t java-ci-app .
 
     - name: Run Docker container
-      run: dpcker run --rm java-ci-app 
+      run: docker run --rm java-ci-app 
 
     - name: Show images
       run: docker images
